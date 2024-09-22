@@ -51,10 +51,11 @@ This is a simple blog application built using Django. It provides features to cr
 ## **Unit Tests**
 1. Model: Testing the creation of a post and ensuring slugs are generated correctly
 2. Only author can delete own post
-
 - To Run the unit tests run the following commands in terminal
   - python manage.py migrate
   - python manage.py test (for running the testcases)
+ 
+  ![image](https://github.com/user-attachments/assets/44b294d6-feb0-442e-b106-00dde3479a7a)
 
 
 
