@@ -34,7 +34,7 @@ class PostUpdateView(UpdateView):
         obj = self.get_object()
         if request.user != obj.author:
             messages.error(request, "You cannot edit this post.")
-            return redirect('post-list')  # Change to your post list URL name
+            return redirect('post-list')  
         return super().dispatch(request, *args, **kwargs)
     
 
@@ -46,7 +46,7 @@ class PostDeleteView(DeleteView):
         obj = self.get_object()
         if request.user != obj.author:
             messages.error(request, "You cannot delete this post.")
-            return redirect('post-list')  # Change to your post list URL name
+            return redirect('post-list')  
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
