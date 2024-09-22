@@ -24,9 +24,28 @@ This is a simple blog application built using Django. It provides features to cr
 ## **Installation and Setup**
 
 ### 1. Clone the repository
-git clone [https://github.com/josephpeter231/fabheads-project.git](https://github.com/josephpeter231/fabheads-project.git)
-cd blog_project
+- git clone [https://github.com/josephpeter231/fabheads-project.git](https://github.com/josephpeter231/fabheads-project.git)
+- cd blog_project
 
 ### 2. Install Dependencies
-- pip install -r requirements.txt
+- pip install django djangorestframework (either in virtual env or globally)
 
+### 3. Run Migrations
+- python manage.py makemigrations
+- python manage.py migrate
+
+### 4. Create a Superuser
+- python manage.py createsuperuser (To view the admin Interface)
+
+### 5. Start the Server
+- python manage.py runserver 
+  (application can be accessed [http://127.0.0.1:8000/](http://127.0.0.1:8000/))
+
+## **Application Features**
+
+### Blog Posts
+- Create: Navigate to /posts/new/ and fill out the form to create a new post.
+- Read: View all posts at /posts/ or view a specific post at /posts/<slug>/.
+- Update: Edit a post you created by going to /posts/<slug>/edit/.
+- Delete: Delete a post by going to /posts/<slug>/delete/.
+- Only respective authors can edit or delete the post.

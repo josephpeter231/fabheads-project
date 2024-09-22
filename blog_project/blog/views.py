@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
+from django.contrib import messages
 
 class PostListView(ListView):
     model = Post
@@ -24,19 +25,29 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+class PostUpdateView(UpdateView):
     model = Post
     template_name = 'blog/post_form.html'
-    fields = ['title', 'slug', 'content']
-    success_url = reverse_lazy('post-list')
+    fields = ['title', 'content']
 
-    def get_queryset(self):
-        return Post.objects.filter(author=self.request.user)
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if request.user != obj.author:
+            messages.error(request, "You cannot edit this post.")
+            return redirect('post-list')  # Change to your post list URL name
+        return super().dispatch(request, *args, **kwargs)
+    
 
-class PostDeleteView(LoginRequiredMixin, DeleteView):
+class PostDeleteView(DeleteView):
     model = Post
     template_name = 'blog/post_confirm_delete.html'
-    success_url = reverse_lazy('post-list')
 
-    def get_queryset(self):
-        return Post.objects.filter(author=self.request.user)
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if request.user != obj.author:
+            messages.error(request, "You cannot delete this post.")
+            return redirect('post-list')  # Change to your post list URL name
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('post-list')  # Change to your post list URL name
