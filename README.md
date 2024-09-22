@@ -41,14 +41,12 @@ This is a simple blog application built using Django. It provides features to cr
 - python manage.py runserver 
   (application can be accessed [http://127.0.0.1:8000/](http://127.0.0.1:8000/))
 
-## **Application Features**
-
-### Blog Posts
-- Create: Navigate to /posts/new/ and fill out the form to create a new post.
-- Read: View all posts at /posts/ or view a specific post at /posts/<slug>/.
-- Update: Edit a post you created by going to /posts/<slug>/edit/.
-- Delete: Delete a post by going to /posts/<slug>/delete/.
-- Only respective authors can edit or delete the post.
+## Application Features
+- **Blog Posts**
+  - **Create:** Navigate to `/posts/new/` and fill out the form to create a new post.
+  - **Read:** View all posts at `/posts/` or view a specific post at `/posts/<slug>/`.
+  - **Update:** Edit a post you created by going to `/posts/<slug>/edit/`.
+  - **Delete:** Delete a post by going to `/posts/<slug>/delete/`.
 
 ## **Unit Tests**
 1. Model: Testing the creation of a post and ensuring slugs are generated correctly
