@@ -49,3 +49,14 @@ This is a simple blog application built using Django. It provides features to cr
 - Update: Edit a post you created by going to /posts/<slug>/edit/.
 - Delete: Delete a post by going to /posts/<slug>/delete/.
 - Only respective authors can edit or delete the post.
+
+## **Unit Tests**
+1. Model: Testing the creation of a post and ensuring slugs are generated correctly
+2. Only author can delete own post
+
+- To Run the unit tests run the following commands in terminal
+  - python manage.py migrate
+  - python manage.py test (for running the testcases)
+
+
+

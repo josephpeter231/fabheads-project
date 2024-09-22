@@ -26,7 +26,8 @@ class PostDeleteTests(TestCase):
         response = self.client.delete(f'/posts/{self.post.slug}/delete/')
         self.assertEqual(response.status_code, 302)  # Expect redirect, not forbidden
 
-        # Verify that the post still exists
+        # if user1 creates user2 should not be able to delete it
+        # if user2 is able to delete then it should return error
         self.assertTrue(Post.objects.filter(slug=self.post.slug).exists())
 
         self.client.logout()
@@ -34,5 +35,5 @@ class PostDeleteTests(TestCase):
         response = self.client.delete(f'/posts/{self.post.slug}/delete/')
         self.assertEqual(response.status_code, 302)  #after successfull deletion
 
-        # To Verify that the post no longer exists
+        # this is to check whether the author itself is able to delete his own post
         self.assertFalse(Post.objects.filter(slug=self.post.slug).exists())
