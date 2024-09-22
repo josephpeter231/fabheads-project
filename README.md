@@ -2,6 +2,10 @@
 
 This is a simple blog application built using Django. It provides features to create, read, update, and delete blog posts. The application also includes a REST API for managing blog posts using Django Rest Framework (DRF).
 
+# Demonstration Video
+
+[Watch Video](Demo_video/demo.mp4)
+
 ## **Features**
 
 - User authentication for creating, editing, and deleting posts
