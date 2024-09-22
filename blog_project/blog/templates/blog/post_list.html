@@ -1,0 +1,20 @@
+<!-- templates/blog/post_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post List</title>
+</head>
+<body>
+    <h1>Posts</h1>
+    <a href="{% url 'post-create' %}">Create New Post</a>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post-detail' post.slug %}">{{ post.title }}</a>
+                - <a href="{% url 'post-edit' post.slug %}">Edit</a>
+                - <a href="{% url 'post-delete' post.slug %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
