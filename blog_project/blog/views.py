@@ -50,4 +50,4 @@ class PostDeleteView(DeleteView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('post-list')  # Change to your post list URL name
+        return reverse('post-list') 
